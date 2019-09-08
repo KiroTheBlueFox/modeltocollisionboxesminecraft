@@ -16,3 +16,7 @@ One version is for Minecraft 1.12.x.
 The other is for Minecraft 1.14.x.
 
 Information : I recommend having python 3.7 installed to launch it.
+
+What's coming in the future ?
+ - Presets of rotations and all such as : Stairs, Vertical Stairs, Slabs, Vertical Slabs, and more (requests are welcomed).
+ - Visualization of how is the block rotated.
