@@ -23,3 +23,4 @@ Version 1.0 changelog :
 
 What's coming in the future ?
  - Presets of rotations and all such as : Stairs, Vertical Stairs, Slabs, Vertical Slabs, and more (requests are welcomed).
+ - Custom Presets done by users
