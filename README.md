@@ -10,13 +10,13 @@ Please do not remove this comment from the code !
 To clarify :
 I (KiroTheBlueFox (which is my Minecraft username)) own this tool and its code, but the code it generates is owned by the person who did the models you used.
 
-Be Careful !
-There are 2 different versions of the tool !
-One version is for Minecraft 1.12.x.
-The other is for Minecraft 1.14.x.
-
 Information : I recommend having python 3.7 installed to launch it.
+
+Version 1.1 changelog :
+ - Added a visualization of the model's rotation, so it is eaiser to see what you do
+ 
+Version 1.0 changelog :
+ - It was the first release, so no changelog
 
 What's coming in the future ?
  - Presets of rotations and all such as : Stairs, Vertical Stairs, Slabs, Vertical Slabs, and more (requests are welcomed).
- - Visualization of how is the block rotated.
