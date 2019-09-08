@@ -12,6 +12,9 @@ I (KiroTheBlueFox (which is my Minecraft username)) own this tool and its code, 
 
 Information : I recommend having python 3.7 installed to launch it.
 
+Version 1.1.1 changelog :
+ - Added a config.txt file to configure a few things
+
 Version 1.1 changelog :
  - Added a visualization of the model's rotation, so it is eaiser to see what you do
  
