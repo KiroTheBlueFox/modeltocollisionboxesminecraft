@@ -19,6 +19,26 @@ import os
 
 FOLDER = os.path.dirname(os.path.abspath(__file__))
 
+CONFIG = open(os.path.join(FOLDER, "config.txt"),"r", encoding="utf8")
+
+for line in CONFIG:
+    if line.lower().startswith("#     rotationvisualization = "):
+        value = line[30:].lower()
+        if value.startswith("false"):
+            RotationVisualization = False
+        else:
+            RotationVisualization = True
+    if line.lower().startswith("#     mcversion = "):
+        value = line[18:].lower()
+        if value.startswith("1.14"):
+            VERSIONCHECK = False
+            VERSION = "1.14"
+        elif value.startswith("1.12"):
+            VERSIONCHECK = False
+            VERSION = "1.12"
+        else:
+            VERSIONCHECK = True
+
 def clear_screen():
     input("\nPress enter to continue\n")
     command = "cls" if platform.system().lower()=="windows" else "clear"
@@ -30,23 +50,24 @@ def clear_screen_no_enter():
 
 LIST = []
 
-VERSION = ""
-VERSION12 = ["1","1.12","1.12.0","1.12.1","1.12.2","1.12.x"]
-VERSION14 = ["2","1.14","1.14.0","1.14.1","1.14.2","1.14.3","1.14.4","1.14.x"]
+if VERSIONCHECK == True:
+    VERSION = ""
+    VERSION12 = ["1","1.12","1.12.0","1.12.1","1.12.2","1.12.x"]
+    VERSION14 = ["2","1.14","1.14.0","1.14.1","1.14.2","1.14.3","1.14.4","1.14.x"]
 
-while VERSION not in ["1.12","1.14"]:
-    clear_screen_no_enter()
-    VERSION = input("""For which version of the game are you creating collisions ?
+    while VERSION not in ["1.12","1.14"]:
+        clear_screen_no_enter()
+        VERSION = input("""For which version of the game are you creating collisions ?
   1. 1.12.x
   2. 1.14.x
 """)
-    if VERSION.lower() in VERSION12:
-        VERSION = "1.12"
-    elif VERSION.lower() in VERSION14:
-        VERSION = "1.14"
-    else:
-        print("Error: Invalid version. Please retry.")
-        clear_screen()
+        if VERSION.lower() in VERSION12:
+            VERSION = "1.12"
+        elif VERSION.lower() in VERSION14:
+            VERSION = "1.14"
+        else:
+            print("Error: Invalid version. Please retry.")
+            clear_screen()
 
 if VERSION == "1.12":
     dm = 0.5
@@ -326,6 +347,8 @@ while action != "exit":
     if REVERSEDZ == True:
         VISUAL += "\nNorth and South mirrored/exchanged.\n"
     VISUAL += "\n"
+    if RotationVisualization == False:
+        VISUAL = ""
     print("""What do you want to do ?
   1a. Mirror West-East (Axis X)
   1b. Mirror Top-Down (Axis Y)
