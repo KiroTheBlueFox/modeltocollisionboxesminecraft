@@ -123,7 +123,6 @@ while OPEN == True:
     versionSelectionWindow = Tk()
     CenterWindow(versionSelectionWindow, windowSizeY=150)
     currentWindow = versionSelectionWindow
-    versionSelectionWindow.iconbitmap(r'icon.ico')
     setTitleBar(versionSelectionWindow)
     versionSelectionWindow.configure(background="#282c34")
     versionSelectionWindow.protocol("WM_DELETE_WINDOW", on_closing)
@@ -140,6 +139,12 @@ while OPEN == True:
 
     if VERSIONCHECK == True:
         versionSelectionWindow.mainloop()
+    else:
+        versionSelectionWindow.destroy()
+        if VERSION == "1.12":
+            dm = 0.5
+        else:
+            dm = 8
 
 
 
@@ -175,7 +180,6 @@ while OPEN == True:
     FileSelectionWindow = Tk()
     CenterWindow(FileSelectionWindow,windowSizeY=230)
     currentWindow = FileSelectionWindow
-    FileSelectionWindow.iconbitmap(r'icon.ico')
     setTitleBar(FileSelectionWindow)
     FileSelectionWindow.configure(background="#282c34")
     FileSelectionWindow.protocol("WM_DELETE_WINDOW", on_closing)
@@ -213,7 +217,6 @@ the child of another model !)""",font=("Arial",-16,"bold") , background="#282c34
     CollisionCalculatorWindow = Tk()
     CenterWindow(CollisionCalculatorWindow, windowSizeX=339, windowSizeY=370)
     currentWindow = CollisionCalculatorWindow
-    CollisionCalculatorWindow.iconbitmap(r'icon.ico')
     CollisionCalculatorWindow.configure(background="#282c34")
     CollisionCalculatorWindow.protocol("WM_DELETE_WINDOW", on_closing)
     CollisionCalculatorWindow.title("Collisions Generator")
@@ -229,6 +232,7 @@ the child of another model !)""",font=("Arial",-16,"bold") , background="#282c34
     AlreadyInFinishMode = False
     
     def MirrorX():
+        global dm
         for i in range(len(LIST)):
             x1 = LIST[i][0]
             x2 = LIST[i][3]
@@ -243,6 +247,7 @@ the child of another model !)""",font=("Arial",-16,"bold") , background="#282c34
             LIST[i][3] = x2
 
     def MirrorY():
+        global dm
         for i in range(len(LIST)):
             y1 = LIST[i][1]
             y2 = LIST[i][4]
@@ -257,6 +262,7 @@ the child of another model !)""",font=("Arial",-16,"bold") , background="#282c34
             LIST[i][4] = y2
 
     def MirrorZ():
+        global dm
         for i in range(len(LIST)):
             z1 = LIST[i][2]
             z2 = LIST[i][5]
@@ -648,7 +654,25 @@ This can be use to change, for example, facing North to facing East.
         global AlreadyInFinishMode
         if AlreadyInFinishMode == False:
             InfoButton["text"] = "Informations"
-            print("Work in progress")
+            PresetMenu = Tk()
+            
+            setTitleBar(PresetMenu)
+            CenterWindow(PresetMenu, windowSizeX=300, windowSizeY=500)
+            PresetMenu.configure(background="#282c34")
+            PresetMenu.title("Collisions Generator")
+            PresetMenu.resizable(width=False, height=False)
+            
+            PresetTitleLabel = Label(PresetMenu,text="Presets",background="#17191d",relief="flat",foreground="#cacad4",font=("Arial",-20,"bold"))
+            
+            PresetScrollbar = Scrollbar(activebackground="#282c34",activerelief="flat",bd=0,bg="#17191d",relief="flat",troughcolor="#282c34")
+            PresetList = Listbox(bg="#282c34",font=("Arial",-16,"bold"),fg="#cacad4",relief="flat",selectbackground="#17191d",selectforeground="#ffffff",yscrollcommand=PresetScrollbar)
+            
+            PresetTitleLabel.pack(fill="x",pady=5)
+            PresetList.pack()
+            PresetScrollbar.pack(side=RIGHT)
+            # for preset in os.listdir(os.path.join(FOLDER,"Presets")):
+                
+            
     def ResetButtonAction():
         global AlreadyInFinishMode
         if AlreadyInFinishMode == False:
