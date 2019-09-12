@@ -1,10 +1,5 @@
 ##### Kiro's Get Collisions From Block Model Tool Configurations #####
 #                                                                    #
-# Set this to true if you want to have a visualisation of the        #
-# rotation of your collision box.                                    #
-#     RotationVisualization = True                                   #
-#     (default = True)                                               #
-#                                                                    #
 # Set this to 1.14 if you want to run the mc1.14 version by default. #
 # Set this to 1.12 if you want to run the mc1.12 version by default. #
 # Set this to None if you want to be able to choose which mc version #
