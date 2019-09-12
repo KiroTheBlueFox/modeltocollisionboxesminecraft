@@ -653,24 +653,7 @@ This can be use to change, for example, facing North to facing East.
     def PresetButtonAction():
         global AlreadyInFinishMode
         if AlreadyInFinishMode == False:
-            InfoButton["text"] = "Informations"
-            PresetMenu = Tk()
-            
-            setTitleBar(PresetMenu)
-            CenterWindow(PresetMenu, windowSizeX=300, windowSizeY=500)
-            PresetMenu.configure(background="#282c34")
-            PresetMenu.title("Collisions Generator")
-            PresetMenu.resizable(width=False, height=False)
-            
-            PresetTitleLabel = Label(PresetMenu,text="Presets",background="#17191d",relief="flat",foreground="#cacad4",font=("Arial",-20,"bold"))
-            
-            PresetScrollbar = Scrollbar(activebackground="#282c34",activerelief="flat",bd=0,bg="#17191d",relief="flat",troughcolor="#282c34")
-            PresetList = Listbox(bg="#282c34",font=("Arial",-16,"bold"),fg="#cacad4",relief="flat",selectbackground="#17191d",selectforeground="#ffffff",yscrollcommand=PresetScrollbar)
-            
-            PresetTitleLabel.pack(fill="x",pady=5)
-            PresetList.pack()
-            PresetScrollbar.pack(side=RIGHT)
-            # for preset in os.listdir(os.path.join(FOLDER,"Presets")):
+            print("Work-in-progress")
                 
             
     def ResetButtonAction():
