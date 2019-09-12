@@ -10,7 +10,7 @@ Please do not remove this comment from the code !
 To clarify :
 I (KiroTheBlueFox (which is my Minecraft username)) own this tool and its code, but the code it generates is owned by the person who did the models you used.
 
-Information : I recommend having python 3.7 installed to launch it.
+Information : You need python 3.7 installed to launch it.
 
 Version 1.1.1 changelog :
  - Added a config.txt file to configure a few things
