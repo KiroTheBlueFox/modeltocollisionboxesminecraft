@@ -12,6 +12,9 @@ I (KiroTheBlueFox (which is my Minecraft username)) own this tool and its code, 
 
 Information : You need python 3.7 installed to launch it.
 
+Version 1.2 changelog :
+ - Added a graphic interface to make the tool easier to use and more intuitive instead of being only text
+
 Version 1.1.1 changelog :
  - Added a config.txt file to configure a few things
 
@@ -24,4 +27,3 @@ Version 1.0 changelog :
 What's coming in the future ?
  - Presets of rotations and all such as : Stairs, Vertical Stairs, Slabs, Vertical Slabs, and more (requests are welcomed).
  - Ability for users to create their own presets
- - Creating a graphic interface to be easier to use and more intuitive intead of having only text
