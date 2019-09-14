@@ -654,56 +654,7 @@ This can be use to change, for example, facing North to facing East.
         global AlreadyInFinishMode
         if AlreadyInFinishMode == False:
             InfoButton["text"] = "Informations"
-            def BrowsePresetFile():
-                SelectedFile = filedialog.askopenfilename(initialdir="/", title="Choose a preset",filetypes=(("Text files (.txt)",".txt"),("All files","*.*")))
-                if SelectedFile.endswith(".txt"):
-                    print(SelectedFile)
-                    file = open(SelectedFile,"r",encoding="utf-8")
-                    f = 0
-                    Preset = file.read()
-                    for i in ["NumberOfVariants","Variant0","ActionsOrder0"]:
-                        if i in Preset:
-                            f += 1
-                    if f >= 3:
-                        PresetLines = Preset.split("\n")
-                        print(PresetLines)
-                        GoodFile = 0
-                        NumberOfVariants = 0
-                        for line in PresetLines:
-                            print(str(line))
-                            if line.startswith("NumberOfVariants"):
-                                line = line.replace(" ","")
-                                NumberOfVariants = line[17:]
-                                print(NumberOfVariants)
-                                try:
-                                    NumberOfVariants = int(NumberOfVariants)
-                                    if NumberOfVariants <= 0:
-                                        print("This file is broken !\nPlease retry")
-                                        return
-                                    else:
-                                        GoodFile += 1
-                                except:
-                                    print("This file is broken !\nPlease retry")
-                                    return
-                            for i in range(NumberOfVariants):
-                                if line.startswith("Variant"+str(i)):
-                                    VariantName = line.replace(" ","")
-                                    VariantName = VariantName[8+len(str(i)):]
-                                    GoodFile += 1
-                                elif line.startswith("ActionsOrder"+str(i)):
-                                    VariantActions = line.replace(" ","")
-                                    VariantActions = VariantActions[13+len(str(i)):]
-                                    GoodFile += 1
-                        if GoodFile < 1+(2*NumberOfVariants):
-                            print("This file is broken !\nPlease retry")
-                            return
-                    else:
-                        print("This file is not a preset (.txt) file !\nPlease retry")
-                        return
-                else:
-                    print("This file is not a preset (.txt) file !\nPlease retry")
-                    return
-            BrowsePresetFile()
+            print("Still in work-in-progress")
     def ResetButtonAction():
         global AlreadyInFinishMode
         if AlreadyInFinishMode == False:
