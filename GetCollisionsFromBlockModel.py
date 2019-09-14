@@ -786,7 +786,7 @@ What's your collisions list's name ?
                 STRSTART = "Java code to create the collision parts :\nprotected static final class PartHolder {\n"+"    /** "+SHAPE+"\n    * "+NAME+" = "+SHAPE+" collision boxes"+HALF+FACING+"\n    * x1 y1 z1 x2 y2 z2 */\n    protected static final double[][] "+NAME+" = {"
                 LISTSTR = str(LIST)
                 LISTSTR = LISTSTR.replace("], ","},\n    "+" "*(38+len(NAME))).replace("[","{").replace("]","}").replace("{{","{").replace("}}","}")
-                STREND = "}"
+                STREND = "};"
                 STRADD = ""
                 for i in range(len(LIST)):
                     STREND += "\n    protected static final AxisAlignedBB "+NAME+"Part"+str(i+1)+" = new AxisAlignedBB("+NAME+"["+str(i)+"][0], "+NAME+"["+str(i)+"][1], "+NAME+"["+str(i)+"][2], "+NAME+"["+str(i)+"][3], "+NAME+"["+str(i)+"][4], "+NAME+"["+str(i)+"][5]);"
@@ -801,7 +801,7 @@ public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos
                 STRSTART = "Java code to create the collision parts :\n"+"/** "+SHAPE+"\n* "+NAME+" = "+SHAPE+" collision boxes"+HALF+FACING+"\n* x1 y1 z1 x2 y2 z2 */\nprotected static final double[][] "+NAME+" = {"
                 LISTSTR = str(LIST)
                 LISTSTR = LISTSTR.replace("], ","},\n"+" "*(38+len(NAME))).replace("[","{").replace("]","}").replace("{{","{").replace("}}","}")
-                STREND = ""
+                STREND = "};"
                 STRADD = "\nprivate static final VoxelShape FULL_"+NAME+"_SHAPE = VoxelShapes.or("
                 for i in range(len(LIST)):
                     STREND += "\nprotected static final VoxelShape "+NAME+"Part"+str(i+1)+" = Block.makeCuboidShape("+NAME+"["+str(i)+"][0], "+NAME+"["+str(i)+"][1], "+NAME+"["+str(i)+"][2], "+NAME+"["+str(i)+"][3], "+NAME+"["+str(i)+"][4], "+NAME+"["+str(i)+"][5]);"
