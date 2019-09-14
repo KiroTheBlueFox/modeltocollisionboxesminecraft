@@ -158,7 +158,7 @@ while OPEN == True:
     def BrowseFile():
         global MODEL
         global BaseFile
-        SelectedFile = filedialog.askopenfilename(initialdir="/", title="Browse",filetypes=(("Json files (.json)",".json"),("All files","*.*")))
+        SelectedFile = filedialog.askopenfilename(initialdir="/", title="Choose a model",filetypes=(("Json files (.json)",".json"),("All files","*.*")))
         if SelectedFile.endswith(".json"):
             with open(os.path.join(SelectedFile), "r") as file:
                 try:
@@ -293,7 +293,7 @@ the child of another model !)""",font=("Arial",-16,"bold") , background="#282c34
             LIST[i][2] = z1
             LIST[i][5] = z2
 
-    def FlipZX():
+    def FlipXY():
         for i in range(len(LIST)):
             x1 = LIST[i][0]
             x2 = LIST[i][3]
@@ -310,7 +310,7 @@ the child of another model !)""",font=("Arial",-16,"bold") , background="#282c34
             LIST[i][1] = y1
             LIST[i][4] = y2
 
-    def FlipXY():
+    def FlipZX():
         for i in range(len(LIST)):
             x1 = LIST[i][0]
             x2 = LIST[i][3]
@@ -653,9 +653,57 @@ This can be use to change, for example, facing North to facing East.
     def PresetButtonAction():
         global AlreadyInFinishMode
         if AlreadyInFinishMode == False:
-            print("Work-in-progress")
-                
-            
+            InfoButton["text"] = "Informations"
+            def BrowsePresetFile():
+                SelectedFile = filedialog.askopenfilename(initialdir="/", title="Choose a preset",filetypes=(("Text files (.txt)",".txt"),("All files","*.*")))
+                if SelectedFile.endswith(".txt"):
+                    print(SelectedFile)
+                    file = open(SelectedFile,"r",encoding="utf-8")
+                    f = 0
+                    Preset = file.read()
+                    for i in ["NumberOfVariants","Variant0","ActionsOrder0"]:
+                        if i in Preset:
+                            f += 1
+                    if f >= 3:
+                        PresetLines = Preset.split("\n")
+                        print(PresetLines)
+                        GoodFile = 0
+                        NumberOfVariants = 0
+                        for line in PresetLines:
+                            print(str(line))
+                            if line.startswith("NumberOfVariants"):
+                                line = line.replace(" ","")
+                                NumberOfVariants = line[17:]
+                                print(NumberOfVariants)
+                                try:
+                                    NumberOfVariants = int(NumberOfVariants)
+                                    if NumberOfVariants <= 0:
+                                        print("This file is broken !\nPlease retry")
+                                        return
+                                    else:
+                                        GoodFile += 1
+                                except:
+                                    print("This file is broken !\nPlease retry")
+                                    return
+                            for i in range(NumberOfVariants):
+                                if line.startswith("Variant"+str(i)):
+                                    VariantName = line.replace(" ","")
+                                    VariantName = VariantName[8+len(str(i)):]
+                                    GoodFile += 1
+                                elif line.startswith("ActionsOrder"+str(i)):
+                                    VariantActions = line.replace(" ","")
+                                    VariantActions = VariantActions[13+len(str(i)):]
+                                    GoodFile += 1
+                        if GoodFile < 1+(2*NumberOfVariants):
+                            print("This file is broken !\nPlease retry")
+                            return
+                    else:
+                        print("This file is not a preset (.txt) file !\nPlease retry")
+                        return
+                else:
+                    print("This file is not a preset (.txt) file !\nPlease retry")
+                    return
+            BrowsePresetFile()
     def ResetButtonAction():
         global AlreadyInFinishMode
         if AlreadyInFinishMode == False:
@@ -821,6 +869,8 @@ public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos,
             FinishButton["command"] = FinishButtonAction
             FinishButton["text"] = "Finish"
             FinishButton["font"] = ("Arial",-16,"bold")
+    def SelectPreset():
+        return
     VisualImageBase = Image.open(VISUAL)
     VisualImageBase = VisualImageBase.resize((200,200),Image.LANCZOS)
     VisualImage = ImageTk.PhotoImage(VisualImageBase)
