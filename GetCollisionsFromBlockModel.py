@@ -76,6 +76,7 @@ while OPEN == True:
             if value.startswith("1.14"):
                 VERSIONCHECK = False
                 VERSION = "1.14"
+                
             elif value.startswith("1.12"):
                 VERSIONCHECK = False
                 VERSION = "1.12"
@@ -110,14 +111,14 @@ while OPEN == True:
         global VERSION
         global dm
         VERSION = "1.14"
-        dm = 0.5
+        dm = 8
         versionSelectionWindow.destroy()
 
     def select12():
         global VERSION
         global dm
         VERSION = "1.12"
-        dm = 8
+        dm = 0.5
         versionSelectionWindow.destroy()
     
     versionSelectionWindow = Tk()
