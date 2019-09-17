@@ -205,15 +205,18 @@ the child of another model !)""",font=("Arial",-16,"bold") , background="#282c34
 
     ### Collision Calculator Window ###
     
-    LIST = []
+    def ResetMODEL():
+        LIST = []
+        global CUBOID, MODEL, LIST
+        for i in range(len(MODEL)):
+            CUBOID = MODEL[i]
+            POS = CUBOID["from"]+CUBOID["to"]
+            if VERSION == "1.12":
+                for i in range(6):
+                    POS[i] = POS[i] / 16
+            LIST.append(POS)
 
-    for i in range(len(MODEL)):
-        CUBOID = MODEL[i]
-        POS = CUBOID["from"]+CUBOID["to"]
-        if VERSION == "1.12":
-            for i in range(6):
-                POS[i] = POS[i] / 16
-        LIST.append(POS)
+    ResetMODEL()
 
     CollisionCalculatorWindow = Tk()
     CenterWindow(CollisionCalculatorWindow, windowSizeX=339, windowSizeY=370)
@@ -669,6 +672,7 @@ This can be use to change, for example, facing North to facing East.
             with open(BaseFile, "r") as file:
                 MODEL = json.load(file)
                 MODEL = MODEL["elements"]
+            ResetMODEL()
             Reversing()
             ImageReload()
     def none():
