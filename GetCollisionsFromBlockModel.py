@@ -548,6 +548,7 @@ the child of another model !)""",font=("Arial",-16,"bold") , background="#282c34
     
     VISUAL = os.path.join(FOLDER, "Visualizations\\"+BLOCKTOPFACING+BLOCKROTATION+".png")
     def ImageReload():
+        ResetMODEL()
         global VisualImage, VisualImageBase, VisualImageLabel, VISUAL, BLOCKROTATION, BLOCKTOPFACING
         InfoButton["text"] = "Informations"
         VISUAL = os.path.join(FOLDER, "Visualizations\\"+BLOCKTOPFACING+BLOCKROTATION+".png")
@@ -672,7 +673,6 @@ This can be use to change, for example, facing North to facing East.
             with open(BaseFile, "r") as file:
                 MODEL = json.load(file)
                 MODEL = MODEL["elements"]
-            ResetMODEL()
             Reversing()
             ImageReload()
     def none():
